@@ -46,7 +46,7 @@ types:
             type: object
             description: Description del type
             properties:
-              type:
+              type: # todo este type se encapsulará y se colocará de la forma estandar
                 (annotations.bindingDefinition):
                   - method: "POST"
                     input: "REQUIRED"
@@ -78,9 +78,15 @@ types:
                       descriptio: Value of the rate
             examples: !include examples/financial-object/post_resquest.json
       responses:
-        204:
+        201:
           description: |
-            No Content.
+            Succesfully created a new resource
+          headers:
+            Location:
+              description: |
+                Location of the newly created resource
+              type: object #aqui se necesita especificar que se da de salida en el 201, se puede colocar el type como file o explcito anonimo
+              required: false
         400:
           description: |
             Bad Request.
@@ -93,14 +99,4 @@ types:
                   displayName: Nombre del error.
                   description: Descripcion del error.
     get:
-      description: Lista los tipos de cambio
-      responses:
-        201:
-          description: |
-            Succesfully created a new resource
-          headers:
-            Location:
-              description: |
-                Location of the newly created resource
-              type: object
-              required: false
+      description: Lista los tipos de cambio # aqui se necesita terminar la implenetacion del get
