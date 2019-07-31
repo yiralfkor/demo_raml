@@ -40,43 +40,42 @@ types:
     Api demo curso RAML.
   /financial-object:
     post:
-      description: Create a new resource
+      description: Create a new resource.
       body:
         application/json:
             type: object
-              description: |
-                Description del type
-              properties:
-                type:
-                  (annotations.bindingDefinition):
-                    - method: "POST"
-                      input: "REQUIRED"
-                      output: "REQUIRED"
-                  enum: [Foreing_exchange, Foreing_exchange_Digital]
-                  (annotations.enumDescription):
-                    - Foreing_exchange: Tipo para tasa de cambio para monedas físicas.
-                    - Foreing_exchange_Digital: Tipo para tasa de cambio para monedas virtuales.
-                  description: : Type of foreign exchange
-                  required: false
-                name:
-                  type: String
-                  description: Name of foreign exchange
-                  required: false
-                shortName:
-                  type: String
-                  description: Short name of the foreign exchange
-                  required: false
-                rates:
-                  type: object
-                  description: Rate between the currencies.
-                  items:
-                    properties:
-                      id:
-                        type: number
-                        description: Identifier of the rate
-                      value:
-                        type: number
-                        descriptio: Value of the rate
+            description: Description del type
+            properties:
+              type:
+                (annotations.bindingDefinition):
+                  - method: "POST"
+                    input: "REQUIRED"
+                    output: "REQUIRED"
+                enum: [Foreing_exchange, Foreing_exchange_Digital]
+                (annotations.enumDescription):
+                  - Foreing_exchange: Tipo para tasa de cambio para monedas físicas.
+                  - Foreing_exchange_Digital: Tipo para tasa de cambio para monedas virtuales.
+                description: : Type of foreign exchange
+                required: false
+              name:
+                type: String
+                description: Name of foreign exchange
+                required: false
+              shortName:
+                type: String
+                description: Short name of the foreign exchange
+                required: false
+              rates:
+                type: object
+                description: Rate between the currencies.
+                items:
+                  properties:
+                    id:
+                      type: number
+                      description: Identifier of the rate
+                    value:
+                      type: number
+                      descriptio: Value of the rate
             examples: !include examples/financial-object/post_resquest.json
       responses:
         204:
