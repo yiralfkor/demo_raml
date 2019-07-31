@@ -1,0 +1,14 @@
+#%RAML 1.0 AnnotationTypeDeclaration
+displayName: CountrySpecific
+description:  |
+  This annotation describes specific information from a country. This annotation should be used in resources and data types to specify something specific from a country.
+allowedTargets: [Resource, TypeDeclaration, Method]
+type: array
+items:
+  properties:
+    country:
+      type: string
+      description: Country specified with the ISO 3166-1 alfa-2 two letters code
+    description?:
+      type: string
+      description: A description of the specific behvaiour from this country.

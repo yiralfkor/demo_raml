@@ -1,0 +1,10 @@
+#%RAML 1.0 AnnotationTypeDeclaration
+displayName: ServiceId
+description: |
+  This annotation provides a key about a service identifier. Use on method to provide information about service identifier.
+allowedTargets: [Method]
+type: object
+properties:
+  name:
+    type: string
+    pattern: (get|post|put|patch|delete)(List)?([A-Za-z]+)(V[0-9])+

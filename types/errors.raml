@@ -1,0 +1,40 @@
+#%RAML 1.0 DataType
+uses:
+  annotations: ../../glapi-global-apis-commons-commons/annotations/annotationsLibrary.raml
+
+description: Default data structure for errors in BBVA APIs
+type: object
+properties:
+  messages:
+    type: array
+    description: Array containing the diferent errors in a resource invocation
+    items:
+      properties:
+        code:
+          type: string
+          required: true
+          description: Code associated to the error
+        message:
+          type: string
+          required: true
+          description: Meesage associated to the error
+        parameters:
+          type: array
+          required: false
+          description: Parameters wrong informed.
+          items:
+            properties:
+              name:
+                type: string
+                required: true
+                description: Name of parameter wrong informed.
+        type:
+          type: string
+          required: true
+          description: Type of error.
+          enum: ["FATAL", "CRITICAL","ERROR","WARNING"]
+          (annotations.enumDescription):
+             - FATAL : Indicates an error that blocks full functionality. You can not continue.
+             - CRITICAL : It indicates an error that prevents the operation of the partial application.
+             - ERROR: It indicates an error that does not affect more features.
+             - WARNING: It indicates an error that does not affect functionality, but must inform and consumers can take action according to the warning.

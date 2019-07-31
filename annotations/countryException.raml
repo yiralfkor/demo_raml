@@ -1,0 +1,14 @@
+#%RAML 1.0 AnnotationTypeDeclaration
+displayName: CountryException
+description:  |
+  This annotation describes the country information about of exception. This annotation should be used in resources to specify implementation from a country.
+allowedTargets: [TypeDeclaration]
+type: array
+items:
+  properties:
+    country:
+      type: string
+      description: Country specified with the ISO 3166-1 alfa-2 two letters code
+    description?:
+      type: string
+      description: A description of the exception behvaiour from this country.

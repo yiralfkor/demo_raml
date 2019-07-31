@@ -1,0 +1,14 @@
+#%RAML 1.0 AnnotationTypeDeclaration
+displayName: FunctionalError
+description: |
+  This annotation provides a key and a description about a functional error. Use on responses to provide information about functional errors.
+allowedTargets: [Response]
+type: array
+items:
+  properties:
+    INCOMPATIBLE_FIELDS?:
+      type: string
+      description: Two or more fields are incompatible.
+    INVALID_ACCOUNT_STATE?:
+      type: string
+      description: The account is in an invalid state.

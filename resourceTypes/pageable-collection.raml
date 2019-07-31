@@ -1,0 +1,66 @@
+#%RAML 1.0 ResourceType
+get?:
+  responses:
+    200:
+      body:
+        application/json:
+      description: Ok
+    204:
+      description: No Content
+
+    206:
+      description: Partial content
+      body:
+        application/json:
+    400:
+      description: Bad Request
+    401:
+      description: Unauthorized
+    403:
+      description: Forbidden
+    500:
+      description: Server Error
+
+post?:
+  responses:
+    400:
+      description: Bad Request
+    401:
+      description: Unauthorized
+    403:
+      description: Forbidden
+    500:
+      description: Server Error
+
+delete?:
+  responses:
+    400:
+      description: Bad Request
+    401:
+      description: Unauthorized
+    403:
+      description: Forbidden
+    500:
+      description: Server Error
+
+put?:
+  responses:
+    400:
+      description: Bad Request
+    401:
+      description: Unauthorized
+    403:
+      description: Forbidden
+    500:
+      description: Server Error
+
+patch?:
+  responses:
+    400:
+      description: Bad Request
+    401:
+      description: Unauthorized
+    403:
+      description: Forbidden
+    500:
+      description: Server Error

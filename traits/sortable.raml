@@ -1,0 +1,7 @@
+#%RAML 1.0 Trait
+queryParameters:
+  orderBy:
+    description: "Order by selected fields: <<fieldsList>> of the <<resourcePathName | !singularize>>, by default this is done in ascending sort order, to get a descending order, add ' desc' (with a leading space) as a suffix to the attribute name."
+    type: string
+    required: false
+    default: <<defaultField>>

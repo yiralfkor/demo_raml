@@ -1,0 +1,16 @@
+#%RAML 1.0 AnnotationTypeDeclaration
+displayName: BindingView
+description:  |
+  This annotation describes the binding view for data types. This annotation should be used in properties in data types indicating the binding view
+type: array
+items:
+  properties:
+    view:
+      type: string
+      required: true
+      description: This field define the view's name that's applied to the property
+    includedInDefaultView:
+      type: boolean
+      required: true
+      default: false
+      description: This field define if this property must be included in default view

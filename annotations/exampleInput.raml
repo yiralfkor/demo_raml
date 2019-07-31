@@ -1,0 +1,27 @@
+#%RAML 1.0 AnnotationTypeDeclaration
+uses:
+  annotations: annotationsLibrary.raml
+
+displayName: exampleInput
+description:  |
+  Input values for an example. Define inputs to activate an specific examples declaring param types, names and values.
+allowedTargets: Example
+type: array
+items:
+  properties:
+    inputType:
+      description: defines the input type (uriParam, queryParam), fill the input type using as values uriParam, queryParam
+      enum: [ uriParam, queryParam ]
+      required: true
+      type: string
+      (annotations.enumDescription):
+        - uriParam : URI parameter.
+        - queryParam : Query parameter.
+    inputName:
+      type: string
+      description: defines the input name, fill the input name using the uri param name, query param name, etc exactly as is defined in the resource
+      required: true
+    inputValue:
+      type: string
+      description: defines the input value, fill the input name using the value to be checked
+      required: true

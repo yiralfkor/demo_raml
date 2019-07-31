@@ -1,0 +1,9 @@
+#%RAML 1.0 AnnotationTypeDeclaration
+displayName: VirtualService
+description: |
+  This annotation provides a key about a rewrite virtual service. Use on method to provide information about rewrite a virtual service.
+allowedTargets: [Method]
+type: object
+properties:
+  fromUrl: string
+  toUrl: string

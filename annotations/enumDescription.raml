@@ -1,0 +1,11 @@
+#%RAML 1.0 AnnotationTypeDeclaration
+displayName: EnumDescription
+description:  |
+  This annotation provide description to enumerated values. Just define the annotation in the property with enumerated values.
+type: array
+allowedTargets: [TypeDeclaration]
+items:
+  properties:
+    //: # force all additional properties to be a string
+      type: string
+      description: Description for this enum value.
