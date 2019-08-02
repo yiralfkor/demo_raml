@@ -1,15 +1,21 @@
 #%RAML 1.0 Library
+
 uses:
   annotations: ../annotations/annotationsLibrary.raml
+  fromCurrency: fromCurrency.raml
+  toCurrencies: toCurrencies.raml
 
 types:
   financialObjects:
     type: object
     properties:
-      type:
+      financialType:
         (annotations.bindingDefinition):
           - method: "POST"
             input: "REQUIRED"
+            output: "NONE"
+          - method: "GET"
+            input: "NONE"
             output: "REQUIRED"
         enum: [Foreing_exchange, Foreing_exchange_Digital]
         (annotations.enumDescription):
@@ -17,3 +23,49 @@ types:
           - Foreing_exchange_Digital: Tipo para tasa de cambio para monedas virtuales.
         description: : Type of foreign exchange
         required: false
+      name:
+        (annotattions.bindingDefinition):
+          - method: "POST"
+            input: "OPTIONAL"
+            output: "NONE"
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+        type: string
+        description: Name of foreign exchange
+        required: false
+      shortName:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "NONE"
+          - method: "GET"
+            input: "NONE"
+            output: "REQUIRED"
+        type: string
+        description: Short name of the foreign exchange
+        required: false
+      status:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "NONE"
+        type: boolean
+        required: false
+        description: Status of the foreign exchange.
+      fromCurrency:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "NONE"
+        type: fromCurrency.fromCurrency
+        required: false
+        description: Currency above the rate is calculated.
+      toCurrencies:
+        (annotations.bindingDefinition):
+          - method: "POST"
+            input: "REQUIRED"
+            output: "NONE"
+        type: toCurrencies.toCurrencies
+        required: false
+        description: Anothers currencies with rate it’s calculated

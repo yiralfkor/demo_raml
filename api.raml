@@ -5,9 +5,9 @@ baseUri: http://api.demo-currency-exchange.com
 
 
 uses:
-  #financialObjects: types/financialObjects.raml
+  financialObjects: types/financialObjects.raml
   pagination: types/pagination.raml
-  annotations: annotations/annotationsLibrary.raml
+  annotations: ./annotations/annotationsLibrary.raml
 
 annotationTypes:
   countrySpecific: !include annotations/countrySpecific.raml
@@ -24,59 +24,18 @@ resourceTypes:
 types:
   errors: !include types/errors.raml
 
-types:
-  TestType:
-    type: object
-    properties:
-      id: number
-      optional?: string
-      expanded:
-        type: object
-        properties:
-          count: number
 
 /currency-exchange:
   description: |
     Api demo curso RAML.
+  type: collection
   /financial-object:
     post:
       description: Create a new resource.
       body:
         application/json:
-            type: object
-            description: Description del type
-            properties:
-              type: # todo este type se encapsulará y se colocará de la forma estandar
-                (annotations.bindingDefinition):
-                  - method: "POST"
-                    input: "REQUIRED"
-                    output: "REQUIRED"
-                enum: [Foreing_exchange, Foreing_exchange_Digital]
-                (annotations.enumDescription):
-                  - Foreing_exchange: Tipo para tasa de cambio para monedas físicas.
-                  - Foreing_exchange_Digital: Tipo para tasa de cambio para monedas virtuales.
-                description: : Type of foreign exchange
-                required: false
-              name:
-                type: String
-                description: Name of foreign exchange
-                required: false
-              shortName:
-                type: String
-                description: Short name of the foreign exchange
-                required: false
-              rates:
-                type: object
-                description: Rate between the currencies.
-                items:
-                  properties:
-                    id:
-                      type: number
-                      description: Identifier of the rate
-                    value:
-                      type: number
-                      descriptio: Value of the rate
-            examples: !include examples/financial-object/post_resquest.json
+          type: financialObjects.financialObjects
+          examples: !include examples/financial-object/post_resquest.json
       responses:
         201:
           description: |
@@ -85,8 +44,11 @@ types:
             Location:
               description: |
                 Location of the newly created resource
-              type: object #aqui se necesita especificar que se da de salida en el 201, se puede colocar el type como file o explcito anonimo
-              required: false
+          body:
+            application/json:
+              type: financialObjects.financialObjects #aqui se necesita especificar que se da de salida en el 201, se puede colocar el type como file o explcito anonimo
+              examples:
+
         400:
           description: |
             Bad Request.
@@ -100,3 +62,11 @@ types:
                   description: Descripcion del error.
     get:
       description: Lista los tipos de cambio # aqui se necesita terminar la implenetacion del get
+      type: collection
+      responses:
+        200:
+          description: Lista las tasas de conversion
+          body:
+            application/json:
+              type: financialObjects.financialObjects[]
+              examples: !include examples/financial-object/get_200.json

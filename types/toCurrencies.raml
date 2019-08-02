@@ -1,0 +1,26 @@
+#%RAML 1.0 Library
+
+uses:
+  annotations: ../annotations/annotationsLibrary.raml
+
+types:
+  toCurrencies:
+    type: array
+    items:
+      properties:
+        id:
+          (annotations.bindingDefinition):
+            - method: "POST"
+              input: "REQUIRED"
+              output: "NONE"
+          type: number
+          required: false
+          description: Identifier of currency
+        name:
+          (annotations.bindingDefinition):
+            - method: "POST"
+              input: "REQUIRED"
+              output: "NONE"
+          type: string
+          required: false
+          description: Name of the currency
